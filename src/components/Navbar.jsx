@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 import userIcon from "../assets/user.png";
+
+
 const Navbar = () => {
+
+
   return (
     <div className="flex justify-between items-center">
       <div className=""></div>
