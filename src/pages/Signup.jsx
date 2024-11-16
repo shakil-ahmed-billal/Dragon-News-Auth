@@ -1,10 +1,11 @@
 import { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../provider/AuthProvider'
 
 const Signup = () => {
 
-    const {createUser , setUser}  = useContext(AuthContext)
+    const {createUser ,updateUserInfo, setUser}  = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const handleForm = (event) =>{
         event.preventDefault()
@@ -21,6 +22,10 @@ const Signup = () => {
         .then(res => {
             console.log(res.user);
             setUser(res.user)
+            updateUserInfo({displayName: name , photoURL:photoUrl})
+            .then(()=>{
+                navigate('/')
+            })
         }).catch(error=>{
             console.log(console.log(error.message));
         })
